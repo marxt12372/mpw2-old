@@ -1,12 +1,14 @@
 package engineTester;
 
 
+import models.TexturedModel;
 import org.lwjgl.opengl.Display;
 import renderEngine.DisplayManager;
 import renderEngine.Loader;
 import models.RawModel;
 import renderEngine.Renderer;
 import shaders.StaticShader;
+import textures.ModelTexture;
 
 public class MainGameLoop {
     public static void main(String[] args)
@@ -29,11 +31,14 @@ public class MainGameLoop {
         };
 
         RawModel model = loader.loadToVAO(vertices, indices);
+        ModelTexture texture = new ModelTexture(loader.loadTexture("images/test"));
+        TexturedModel texturedModel = new TexturedModel(model, texture);
+
         while(!Display.isCloseRequested())
         {
             renderer.prepare();
             shader.start();
-            renderer.render(model);
+            renderer.render(texturedModel);
             shader.stop();
             DisplayManager.updateDisplay();
         }

@@ -30,7 +30,14 @@ public class MainGameLoop {
                 3, 1, 2
         };
 
-        RawModel model = loader.loadToVAO(vertices, indices);
+        float[] textureCords = {
+                0, 0,
+                0, 1,
+                1, 1,
+                1, 0
+        };
+
+        RawModel model = loader.loadToVAO(vertices, textureCords, indices);
         ModelTexture texture = new ModelTexture(loader.loadTexture("images/test"));
         TexturedModel texturedModel = new TexturedModel(model, texture);
 

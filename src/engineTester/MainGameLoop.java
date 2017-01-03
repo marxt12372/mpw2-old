@@ -30,11 +30,13 @@ public class MainGameLoop {
         texture.setReflectivity(1);
         Entity entity = new Entity(texturedModel, new Vector3f(0, 0 ,-50), 0, 0, 0, 1);*/
         Entity entity = OBJLoader.createModel("stall", 0, 0, -50, 0, 0, 0, 1, 10, 1);
+        Entity entity2 = OBJLoader.createModel("stall", 20, 0, -50, 0, 0, 0, 0.8f, 20, 0.75f);
 
         Light light = new Light(new Vector3f(0, 0, -20), new Vector3f(1, 1, 1));
 
         Camera camera = new Camera();
 
+        //TODO: If nothing new happens, create a list with all entities and add a new one each time OBJLoader.createModel is called and loop trough them in the while loop.
         while(!Display.isCloseRequested())
         {
             entity.increaseRotation(0, 1, 0);
@@ -44,6 +46,7 @@ public class MainGameLoop {
             shader.loadLight(light);
             shader.loadViewMatrix(camera);
             renderer.render(entity, shader);
+            renderer.render(entity2, shader);
             shader.stop();
             DisplayManager.updateDisplay();
         }

@@ -16,7 +16,7 @@ import java.util.List;
 
 public class OBJLoader
 {
-    public static Entity createModel(String name, float posX, float posY, float posZ, float rotX, float rotY, float rotZ, float scale, int shineDamper, int reflectivity)
+    public static Entity createModel(String name, float posX, float posY, float posZ, float rotX, float rotY, float rotZ, float scale, float shineDamper, float reflectivity)
     {
         Loader loader = new Loader();
         RawModel model = OBJLoader.loadObjModel(name, loader);

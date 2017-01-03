@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb4392b1-ffe5-4eff-a10a-1d71720d8f69" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/mart.xml" />
+    <list default="true" id="bb4392b1-ffe5-4eff-a10a-1d71720d8f69" name="Default" comment="Nothing changed.">
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Multiplayer World 2/renderEngine/RawModel.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Multiplayer World 2/renderEngine/Renderer.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Multiplayer World 2/engineTester/MainGameLoop.class" afterPath="$PROJECT_DIR$/out/production/Multiplayer World 2/engineTester/MainGameLoop.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Multiplayer World 2/renderEngine/DisplayManager.class" afterPath="$PROJECT_DIR$/out/production/Multiplayer World 2/renderEngine/DisplayManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Multiplayer World 2/renderEngine/Loader.class" afterPath="$PROJECT_DIR$/out/production/Multiplayer World 2/renderEngine/Loader.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engineTester/MainGameLoop.java" afterPath="$PROJECT_DIR$/src/engineTester/MainGameLoop.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,8 +29,8 @@
       <file leaf-file-name="MainGameLoop.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/engineTester/MainGameLoop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="49" column="5" lean-forward="false" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+            <state relative-caret-position="405">
+              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -833,7 +830,14 @@
       <option name="project" value="LOCAL" />
       <updated>1483466616870</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Nothing changed.">
+      <created>1483466957890</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1483466957890</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -849,7 +853,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27419356" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27419356" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -874,7 +878,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added TexturedModel.java and ModelTexture.java" />
     <MESSAGE value="Changes &quot;res&quot; to &quot;resources&quot;" />
     <MESSAGE value="Added TexturedModel stuff to Gameloop&#10;Changed Renderer to use textured models instead of raw models." />
     <MESSAGE value="Added textureCords and loading into VAO." />
@@ -899,7 +902,8 @@
     <MESSAGE value="Added a terrain Generator" />
     <MESSAGE value="Added terrain(aka sea for us) generation&#10;Added fog generation" />
     <MESSAGE value="Removed unused imports." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed unused imports." />
+    <MESSAGE value="Nothing changed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Nothing changed." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1430,8 +1434,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/engineTester/MainGameLoop.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="49" column="5" lean-forward="false" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+        <state relative-caret-position="405">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -29,7 +29,7 @@ public class MainGameLoop {
         texture.setShineDamper(10);
         texture.setReflectivity(1);
         Entity entity = new Entity(texturedModel, new Vector3f(0, 0 ,-50), 0, 0, 0, 1);*/
-        Entity entity = OBJFileLoader.createModel("stall", 0, 0, -50, 0, 180, 0, 1, 10, 1);
+        Entity entity = OBJFileLoader.createModel("townhall1", 0, 0, -50, 0, 180, 0, 1, 10, 1);
         //Entity entity2 = OBJFileLoader.createModel("stall", 1, 0, -50, 0, 180, 0, 1, 10, 1);
 
         Light light = new Light(new Vector3f(0, 0, -20), new Vector3f(1, 1, 1));

@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb4392b1-ffe5-4eff-a10a-1d71720d8f69" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ideas.txt" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/blends/copstation1.blend" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/blends/copstation1.blend1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/objects/copstation1.mtl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/objects/copstation1.obj" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Multiplayer World 2/engineTester/MainGameLoop.class" afterPath="$PROJECT_DIR$/out/production/Multiplayer World 2/engineTester/MainGameLoop.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Multiplayer World 2/renderEngine/DisplayManager.class" afterPath="$PROJECT_DIR$/out/production/Multiplayer World 2/renderEngine/DisplayManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Multiplayer World 2/renderEngine/Loader.class" afterPath="$PROJECT_DIR$/out/production/Multiplayer World 2/renderEngine/Loader.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Ideas.txt" afterPath="$PROJECT_DIR$/Ideas.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engineTester/MainGameLoop.java" afterPath="$PROJECT_DIR$/src/engineTester/MainGameLoop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/entities/Camera.java" afterPath="$PROJECT_DIR$/src/entities/Camera.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/renderEngine/DisplayManager.java" afterPath="$PROJECT_DIR$/src/renderEngine/DisplayManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/renderEngine/Loader.java" afterPath="$PROJECT_DIR$/src/renderEngine/Loader.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,27 +26,9 @@
       <file leaf-file-name="MainGameLoop.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/engineTester/MainGameLoop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="47" column="17" lean-forward="false" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OBJFileLoader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/objConverter/OBJFileLoader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="39" column="21" lean-forward="false" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1864#1872#0" expanded="true" />
-                <element signature="e#1917#1927#0" expanded="true" />
-                <element signature="e#1971#1981#0" expanded="true" />
-                <element signature="e#2024#2033#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="3">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -205,8 +177,8 @@
         <option value="$PROJECT_DIR$/src/renderEngine/DisplayManager.java" />
         <option value="$PROJECT_DIR$/src/engineTester/MouseListener.java" />
         <option value="$PROJECT_DIR$/src/renderEngine/Loader.java" />
-        <option value="$PROJECT_DIR$/src/engineTester/MainGameLoop.java" />
         <option value="$PROJECT_DIR$/src/entities/Camera.java" />
+        <option value="$PROJECT_DIR$/src/engineTester/MainGameLoop.java" />
       </list>
     </option>
   </component>
@@ -1013,7 +985,14 @@
       <option name="project" value="LOCAL" />
       <updated>1483471452518</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Added camera movement.&#10;Added Ideas file.">
+      <created>1483481357214</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1483481357214</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1055,7 +1034,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="Added dynamic VAO loading" />
     <MESSAGE value="Added 2D texture loading" />
     <MESSAGE value="Added textureCords bindattribute" />
     <MESSAGE value="Added 2D shaders" />
@@ -1080,7 +1058,8 @@
     <MESSAGE value="Changed the default densiti and gradient." />
     <MESSAGE value="Updated the OBJ file loader.&#10;Removed the old one." />
     <MESSAGE value="Created Movable player support" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Movable player support" />
+    <MESSAGE value="Added camera movement.&#10;Added Ideas file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added camera movement.&#10;Added Ideas file." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1153,9 +1132,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
           <caret line="32" column="25" lean-forward="false" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1204,9 +1181,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="29" column="61" lean-forward="false" selection-start-line="29" selection-start-column="61" selection-end-line="29" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1255,9 +1230,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1306,9 +1279,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1540,33 +1511,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/objConverter/OBJFileLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="39" column="21" lean-forward="false" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1864#1872#0" expanded="true" />
-            <element signature="e#1917#1927#0" expanded="true" />
-            <element signature="e#1971#1981#0" expanded="true" />
-            <element signature="e#2024#2033#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderEngine/DisplayManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="11" column="10" lean-forward="false" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-          <folding>
-            <element signature="e#1174#1175#0" expanded="true" />
-            <element signature="e#1202#1203#0" expanded="true" />
-            <element signature="e#1328#1329#0" expanded="true" />
-            <element signature="e#1394#1395#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/entities/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
@@ -1627,13 +1571,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/engineTester/MainGameLoop.java">
+    <entry file="file://$PROJECT_DIR$/src/renderEngine/DisplayManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="47" column="17" lean-forward="false" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+        <state relative-caret-position="46">
+          <caret line="11" column="10" lean-forward="false" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+          <folding>
+            <element signature="e#1174#1175#0" expanded="true" />
+            <element signature="e#1202#1203#0" expanded="true" />
+            <element signature="e#1328#1329#0" expanded="true" />
+            <element signature="e#1394#1395#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/objConverter/OBJFileLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1425">
+          <caret line="112" column="37" lean-forward="true" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1864#1872#0" expanded="true" />
+            <element signature="e#1917#1927#0" expanded="true" />
+            <element signature="e#1971#1981#0" expanded="true" />
+            <element signature="e#2024#2033#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engineTester/MainGameLoop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

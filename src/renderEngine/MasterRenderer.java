@@ -26,8 +26,8 @@ public class MasterRenderer
     private static final float SKYCOLOUR_R = 0.5f;
     private static final float SKYCOLOUR_G = 0.5f;
     private static final float SKYCOLOUR_B = 0.5f;
-    private static final float SKYCOLOUR_DENSITY = 0.007f;
-    private static final float SKYCOLOUR_GRADIENT = 1.5f;
+    private static final float SKYCOLOUR_DENSITY = 0.0035f;
+    private static final float SKYCOLOUR_GRADIENT = 5.0f;
 
     private StaticShader shader = new StaticShader();
     private EntityRenderer renderer;

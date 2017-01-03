@@ -11,8 +11,7 @@ import terrains.Terrain;
 import textures.ModelTexture;
 
 public class MainGameLoop {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         DisplayManager.createDisplay();
         Loader loader = new Loader();
 
@@ -34,8 +33,7 @@ public class MainGameLoop {
 
         //TODO: If nothing new happens, create a list with all entities and add a new one each time OBJLoader.createModel is called and loop trough them in the while loop.
         MasterRenderer renderer = new MasterRenderer();
-        while(!Display.isCloseRequested())
-        {
+        while (!Display.isCloseRequested()) {
             camera.move();
 
             renderer.processTerrain(terrain);

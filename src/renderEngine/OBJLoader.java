@@ -20,7 +20,7 @@ public class OBJLoader
     {
         Loader loader = new Loader();
         RawModel model = OBJLoader.loadObjModel(name, loader);
-        TexturedModel texturedModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("images/"+name)));
+        TexturedModel texturedModel = new TexturedModel(model, new ModelTexture(loader.loadTexture(""+name)));
         ModelTexture texture = texturedModel.getTexture();
         texture.setShineDamper(shineDamper);
         texture.setReflectivity(reflectivity);

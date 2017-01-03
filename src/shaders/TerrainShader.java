@@ -6,10 +6,10 @@ import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 import toolbox.Maths;
 
-public class StaticShader extends ShaderProgram
+public class TerrainShader extends ShaderProgram
 {
-    private static final String VERTEX_FILE = "src/shaders/vertexShader.txt";
-    private static final String FRAGMENT_FILE = "src/shaders/fragmentShader.txt";
+    private static final String VERTEX_FILE = "src/shaders/terrainVertexShader.txt";
+    private static final String FRAGMENT_FILE = "src/shaders/terrainFragmentShader.txt";
 
     private int location_transformationMatrix;
     private int location_projectionMatrix;
@@ -18,12 +18,12 @@ public class StaticShader extends ShaderProgram
     private int location_lightColour;
     private int location_shineDamper;
     private int location_reflectivity;
-    private int location_useFakeLightning;
     private int location_skyColour;
     private int location_skyDensity;
     private int location_skyGradient;
 
-    public StaticShader() {
+
+    public TerrainShader() {
         super(VERTEX_FILE, FRAGMENT_FILE);
     }
 
@@ -44,7 +44,6 @@ public class StaticShader extends ShaderProgram
         location_lightColour = super.getUniformLocation("lightColour");
         location_shineDamper = super.getUniformLocation("shineDamper");
         location_reflectivity = super.getUniformLocation("reflectivity");
-        location_useFakeLightning = super.getUniformLocation("useFakeLightning");
         location_skyColour = super.getUniformLocation("skyColour");
         location_skyDensity = super.getUniformLocation("density");
         location_skyGradient = super.getUniformLocation("gradient");
@@ -55,11 +54,6 @@ public class StaticShader extends ShaderProgram
         super.loadVector(location_skyColour, new Vector3f(r, g, b));
         super.loadFloat(location_skyDensity, density);
         super.loadFloat(location_skyGradient, gradient);
-    }
-
-    public void loadFakeLightning(boolean useFake)
-    {
-        super.loadBoolean(location_useFakeLightning, useFake);
     }
 
     public void loadShineVariables(float damper, float reflectivity)

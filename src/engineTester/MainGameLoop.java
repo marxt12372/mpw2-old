@@ -10,6 +10,7 @@ import org.lwjgl.util.vector.Vector3f;
 import renderEngine.*;
 import models.RawModel;
 import shaders.StaticShader;
+import terrains.Terrain;
 import textures.ModelTexture;
 
 public class MainGameLoop {
@@ -29,6 +30,9 @@ public class MainGameLoop {
 
         Light light = new Light(new Vector3f(0, 0, -20), new Vector3f(1, 1, 1));
 
+        Terrain terrain = new Terrain(0, -1, loader, new ModelTexture(loader.loadTexture("sea")));
+        Terrain terrain2 = new Terrain(1, -1, loader, new ModelTexture(loader.loadTexture("sea")));
+
         Camera camera = new Camera();
 
         //TODO: If nothing new happens, create a list with all entities and add a new one each time OBJLoader.createModel is called and loop trough them in the while loop.
@@ -37,6 +41,8 @@ public class MainGameLoop {
         {
             camera.move();
 
+            renderer.processTerrain(terrain);
+            renderer.processTerrain(terrain2);
             renderer.processEntity(entity);
 
             renderer.render(light, camera);

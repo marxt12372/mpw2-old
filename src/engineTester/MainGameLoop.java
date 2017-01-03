@@ -4,6 +4,7 @@ package engineTester;
 import entities.Camera;
 import entities.Entity;
 import entities.Light;
+import objConverter.OBJFileLoader;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 import renderEngine.*;
@@ -21,7 +22,7 @@ public class MainGameLoop {
         texture.setShineDamper(10);
         texture.setReflectivity(1);
         Entity entity = new Entity(texturedModel, new Vector3f(0, 0 ,-50), 0, 0, 0, 1);*/
-        Entity entity = OBJLoader.createModel("stall", 0, 0, -50, 0, 180, 0, 1, 10, 1);
+        Entity entity = OBJFileLoader.createModel("stall", 0, 0, -50, 0, 180, 0, 1, 10, 1);
         //Entity entity2 = OBJLoader.createModel("stall", 20, 0, -50, 0, 0, 0, 0.8f, 20, 0.75f);
 
         Light light = new Light(new Vector3f(0, 0, -20), new Vector3f(1, 1, 1));

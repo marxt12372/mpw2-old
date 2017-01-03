@@ -4,6 +4,9 @@ package engineTester;
 import entities.Camera;
 import entities.Entity;
 import entities.Light;
+import entities.Player;
+import models.RawModel;
+import models.TexturedModel;
 import objConverter.OBJFileLoader;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
@@ -32,11 +35,17 @@ public class MainGameLoop {
 
         Camera camera = new Camera();
 
+        RawModel playerModel = OBJFileLoader.loadModel("playerPed");
+		TexturedModel playerTexture = new TexturedModel(playerModel, new ModelTexture(loader.loadTexture("playerPed")));
+        Player player = new Player(playerTexture, new Vector3f(0, 0, -25), 0, 0, 0, 1);
+
         //TODO: If nothing new happens, create a list with all entities and add a new one each time OBJLoader.createModel is called and loop trough them in the while loop.
         MasterRenderer renderer = new MasterRenderer();
         while (!Display.isCloseRequested()) {
             camera.move();
+            player.move();
 
+            renderer.processEntity(player);
             renderer.processTerrain(terrain);
             renderer.processTerrain(terrain2);
             renderer.processEntity(entity);

@@ -32,6 +32,14 @@ public class OBJFileLoader {
 		return new Entity(texturedModel, new Vector3f(posX, posY ,posZ), rotX, rotY, rotZ, scale);
 	}
 
+	public static RawModel loadModel(String name)
+	{
+		Loader loader = new Loader();
+		ModelData data = loadOBJ(name);
+		RawModel model = loader.loadToVAO(data.getVertices(), data.getTextureCoords(), data.getNormals(), data.getIndices());
+		return model;
+	}
+
 	public static ModelData loadOBJ(String objFileName) {
 		FileReader isr = null;
 		File objFile = new File(RES_LOC + objFileName + ".obj");

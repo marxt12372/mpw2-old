@@ -4,12 +4,9 @@ package engineTester;
 import entities.Camera;
 import entities.Entity;
 import entities.Light;
-import models.TexturedModel;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 import renderEngine.*;
-import models.RawModel;
-import shaders.StaticShader;
 import terrains.Terrain;
 import textures.ModelTexture;
 

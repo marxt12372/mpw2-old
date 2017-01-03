@@ -23,13 +23,14 @@ public class MainGameLoop {
         StaticShader shader = new StaticShader();
         Renderer renderer = new Renderer(shader);
 
-        RawModel model = OBJLoader.loadObjModel("stall", loader);
+        /*RawModel model = OBJLoader.loadObjModel("stall", loader);
         TexturedModel texturedModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("images/stall")));
         ModelTexture texture = texturedModel.getTexture();
         texture.setShineDamper(10);
         texture.setReflectivity(1);
+        Entity entity = new Entity(texturedModel, new Vector3f(0, 0 ,-50), 0, 0, 0, 1);*/
+        Entity entity = OBJLoader.createModel("stall", 0, 0, -50, 0, 0, 0, 1, 10, 1);
 
-        Entity entity = new Entity(texturedModel, new Vector3f(0, 0 ,-50), 0, 0, 0, 1);
         Light light = new Light(new Vector3f(0, 0, -20), new Vector3f(1, 1, 1));
 
         Camera camera = new Camera();

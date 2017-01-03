@@ -1,8 +1,11 @@
 package renderEngine;
 
+import entities.Entity;
 import models.RawModel;
+import models.TexturedModel;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
+import textures.ModelTexture;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,6 +16,17 @@ import java.util.List;
 
 public class OBJLoader
 {
+    public static Entity createModel(String name, float posX, float posY, float posZ, float rotX, float rotY, float rotZ, float scale, int shineDamper, int reflectivity)
+    {
+        Loader loader = new Loader();
+        RawModel model = OBJLoader.loadObjModel(name, loader);
+        TexturedModel texturedModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("images/"+name)));
+        ModelTexture texture = texturedModel.getTexture();
+        texture.setShineDamper(shineDamper);
+        texture.setReflectivity(reflectivity);
+        return new Entity(texturedModel, new Vector3f(posX, posY ,posZ), rotX, rotY, rotZ, scale);
+    }
+
     public static RawModel loadObjModel(String fileName, Loader loader)
     {
         FileReader fr = null;

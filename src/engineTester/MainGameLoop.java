@@ -16,7 +16,8 @@ import renderEngine.*;
 import terrains.Terrain;
 import textures.ModelTexture;
 
-import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainGameLoop {
     public static void main(String[] args) {
@@ -33,6 +34,10 @@ public class MainGameLoop {
         //Entity entity2 = OBJFileLoader.createModel("stall", 1, 0, -50, 0, 180, 0, 1, 10, 1);
 
         Light light = new Light(new Vector3f(0, 0, -20), new Vector3f(1, 1, 1));
+        List<Light> lights = new ArrayList<Light>();
+        lights.add(light);
+		lights.add(new Light(new Vector3f(0, 0, 20), new Vector3f(1, 0, 0)));
+		lights.add(new Light(new Vector3f(20, 0, 0), new Vector3f(0, 0, 1)));
 
         Terrain terrain = new Terrain(0, -1, loader, new ModelTexture(loader.loadTexture("sea")));
         Terrain terrain2 = new Terrain(1, -1, loader, new ModelTexture(loader.loadTexture("sea")));
@@ -58,7 +63,7 @@ public class MainGameLoop {
 			renderer.processEntity(entity);
 			//renderer.processEntity(entity2);
 
-            renderer.render(light, camera);
+            renderer.render(lights, camera);
             DisplayManager.updateDisplay();
         }
 

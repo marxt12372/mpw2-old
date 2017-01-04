@@ -9,6 +9,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Matrix4f;
 import shaders.StaticShader;
 import shaders.TerrainShader;
+import skybox.SkyboxRenderer;
 import terrains.Terrain;
 
 import java.util.ArrayList;
@@ -38,6 +39,8 @@ public class MasterRenderer
     private Map<TexturedModel,List<Entity>> entities = new HashMap<TexturedModel,List<Entity>>();
     private List<Terrain> terrains = new ArrayList<Terrain>();
 
+    private SkyboxRenderer skyboxRenderer;
+
     public void prepare()
     {
         GL11.glEnable(GL11.GL_DEPTH_TEST);
@@ -46,11 +49,12 @@ public class MasterRenderer
         //GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
     }
 
-    public MasterRenderer()
+    public MasterRenderer(Loader loader)
     {
         createProjectionMatrix();
         renderer = new EntityRenderer(shader, projectionMatrix);
         terrainRenderer = new TerrainRenderer(terrainShader, projectionMatrix);
+        skyboxRenderer = new SkyboxRenderer(loader, projectionMatrix);
     }
 
     public static void enableCulling()
@@ -81,6 +85,7 @@ public class MasterRenderer
         terrainRenderer.render(terrains);
         terrainShader.stop();
         terrains.clear();
+        skyboxRenderer.render(camera, SKYCOLOUR_R, SKYCOLOUR_G, SKYCOLOUR_B);
     }
 
     public void processTerrain(Terrain terrain)

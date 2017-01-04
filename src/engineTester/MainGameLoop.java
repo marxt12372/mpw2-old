@@ -30,14 +30,19 @@ public class MainGameLoop {
         texture.setShineDamper(10);
         texture.setReflectivity(1);
         Entity entity = new Entity(texturedModel, new Vector3f(0, 0 ,-50), 0, 0, 0, 1);*/
-        Entity entity = OBJFileLoader.createModel("townhall1", 0, 0, -50, 0, 180, 0, 1, 10, 1);
+        //Entity entity = OBJFileLoader.createModel("townhall1", 0, 0, -50, 0, 180, 0, 1, 10, 1);
         //Entity entity2 = OBJFileLoader.createModel("stall", 1, 0, -50, 0, 180, 0, 1, 10, 1);
 
-        Light light = new Light(new Vector3f(0, 0, -20), new Vector3f(1, 1, 1));
-        List<Light> lights = new ArrayList<Light>();
-        lights.add(light);
-		lights.add(new Light(new Vector3f(0, 0, 20), new Vector3f(1, 0, 0)));
-		lights.add(new Light(new Vector3f(20, 0, 0), new Vector3f(0, 0, 1)));
+        //Light light = new Light(new Vector3f(0, 0, -20), new Vector3f(1, 1, 1));
+		List<Light> lights = new ArrayList<Light>();
+		List<Entity> entities = new ArrayList<Entity>();
+        lights.add(new Light(new Vector3f(0, 0, -20), new Vector3f(1, 1, 1)));
+
+        for(int i = 10; i <= 500; i+=20) {
+			lights.add(new Light(new Vector3f(i, 3, -90), new Vector3f(1, 1, 1), new Vector3f(1, 0.01f, 0.002f)));
+			entities.add(OBJFileLoader.createModel("stall", i, 0, -100, 0, 180, 0, 1, 10, 1));
+			entities.add(OBJFileLoader.createModel("townhall1", i, 3, -90, 0, 180, 0, 1, 10, 1));
+		}
 
         Terrain terrain = new Terrain(0, -1, loader, new ModelTexture(loader.loadTexture("sea")));
         Terrain terrain2 = new Terrain(1, -1, loader, new ModelTexture(loader.loadTexture("sea")));
@@ -47,12 +52,39 @@ public class MainGameLoop {
         Player player = new Player(playerTexture, new Vector3f(0, 0, -25), 0, 0, 0, 1);
 		Camera camera = new Camera(player);
 
-        //TODO: If nothing new happens, create a list with all entities and add a new one each time OBJLoader.createModel is called and loop trough them in the while loop.
-        MasterRenderer renderer = new MasterRenderer();
+
+        //TODO: Teha Gui, mis ütleb mis staatuses mäng on(Main Menu, Pause Menu, Chatbox open jne.).
+		//TODO: Teha hiire automaatne muutmine, et ei peaks hoidma all vasakut nuppu.
+        MasterRenderer renderer = new MasterRenderer(loader);
         while (!Display.isCloseRequested()) {
         	if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
         		break;
 			}
+
+			//Vaadata kas üksi valgus on meile piisavalt lähedal.
+			//Kui on siis lisada see meile listi.
+			//Kokku vaadata kuni meil on listis 15 valgust.
+			//Kui on vähem, siis suurendada raadiust, iga korraga mingi suurus, kuni tuleb 15 täis.
+
+			List<Light> lightsToRender = new ArrayList<Light>();
+			int i = 5;
+        	while(lightsToRender.size() < 15) {
+				for(Light light : lights) {
+					if(lightsToRender.size() >= 15)
+					{
+						break;
+					}
+					if((((light.getPosition().x - camera.getPosition().x) < i) && ((light.getPosition().x - camera.getPosition().x) > -i)) && (((light.getPosition().y - camera.getPosition().y) < i) && ((light.getPosition().y - camera.getPosition().y) > -i)) && (((light.getPosition().z - camera.getPosition().z) < i) && ((light.getPosition().z - camera.getPosition().z) > -i)))
+					{
+						if(lightsToRender.size() < 15 && !lightsToRender.contains(light))
+						{
+							lightsToRender.add(light);
+						}
+					}
+				}
+				i += 5;
+			}
+
 
             camera.move();
             player.move();
@@ -60,10 +92,15 @@ public class MainGameLoop {
             renderer.processEntity(player);
             renderer.processTerrain(terrain);
             renderer.processTerrain(terrain2);
-			renderer.processEntity(entity);
+
+            for(Entity entity:entities) {
+				renderer.processEntity(entity);
+			}
+
+
 			//renderer.processEntity(entity2);
 
-            renderer.render(lights, camera);
+            renderer.render(lightsToRender, camera);
             DisplayManager.updateDisplay();
         }
 

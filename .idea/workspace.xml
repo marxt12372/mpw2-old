@@ -25,13 +25,13 @@
       <file leaf-file-name="MainGameLoop.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/engineTester/MainGameLoop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="57" column="84" lean-forward="false" selection-start-line="57" selection-start-column="84" selection-end-line="57" selection-end-column="84" />
+            <state relative-caret-position="244">
+              <caret line="56" column="70" lean-forward="false" selection-start-line="56" selection-start-column="70" selection-end-line="56" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1345#1352#0" expanded="true" />
                 <element signature="e#1395#1403#0" expanded="true" />
-                <element signature="e#3060#3067#0" expanded="true" />
+                <element signature="e#3125#3132#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1055,7 +1055,14 @@
       <option name="project" value="LOCAL" />
       <updated>1483567364125</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Added some todo messages">
+      <created>1483574681484</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1483574681484</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1097,7 +1104,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="Added Uniform variable support" />
     <MESSAGE value="Created toolbox package and added Matrix Creation" />
     <MESSAGE value="Added matrix usage to vertexshader" />
     <MESSAGE value="Created Entity class.&#10;Added functions to increase the position and rotation for an entity.&#10;Generated getters and setters." />
@@ -1122,7 +1128,8 @@
     <MESSAGE value="Going bed for the night." />
     <MESSAGE value="Added multible light source support and attenuation support" />
     <MESSAGE value="Added a skybox." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a skybox." />
+    <MESSAGE value="Added some todo messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some todo messages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1143,7 +1150,7 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1345#1352#0" expanded="true" />
             <element signature="e#1395#1403#0" expanded="true" />
-            <element signature="e#3060#3067#0" expanded="true" />
+            <element signature="e#3125#3132#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1202,7 +1209,7 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1345#1352#0" expanded="true" />
             <element signature="e#1395#1403#0" expanded="true" />
-            <element signature="e#3060#3067#0" expanded="true" />
+            <element signature="e#3125#3132#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1261,7 +1268,7 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1345#1352#0" expanded="true" />
             <element signature="e#1395#1403#0" expanded="true" />
-            <element signature="e#3060#3067#0" expanded="true" />
+            <element signature="e#3125#3132#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1320,7 +1327,7 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1345#1352#0" expanded="true" />
             <element signature="e#1395#1403#0" expanded="true" />
-            <element signature="e#3060#3067#0" expanded="true" />
+            <element signature="e#3125#3132#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1675,13 +1682,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/engineTester/MainGameLoop.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="57" column="84" lean-forward="false" selection-start-line="57" selection-start-column="84" selection-end-line="57" selection-end-column="84" />
+        <state relative-caret-position="244">
+          <caret line="56" column="70" lean-forward="false" selection-start-line="56" selection-start-column="70" selection-end-line="56" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1345#1352#0" expanded="true" />
             <element signature="e#1395#1403#0" expanded="true" />
-            <element signature="e#3060#3067#0" expanded="true" />
+            <element signature="e#3125#3132#0" expanded="true" />
           </folding>
         </state>
       </provider>

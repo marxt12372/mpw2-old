@@ -54,6 +54,7 @@ public class MainGameLoop {
 
 
         //TODO: Teha Gui, mis ütleb mis staatuses mäng on(Main Menu, Pause Menu, Chatbox open jne.).
+		//TODO: Teha multiplayeri mapi jms asjade download ja uuendus.
 		//TODO: Teha hiire automaatne muutmine, et ei peaks hoidma all vasakut nuppu.
 		//TODO: Teha object collision detection mis suppordiks ka kaamera liigutusi.
         MasterRenderer renderer = new MasterRenderer(loader);

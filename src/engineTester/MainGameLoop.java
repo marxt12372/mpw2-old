@@ -9,7 +9,6 @@ import models.RawModel;
 import models.TexturedModel;
 import objConverter.OBJFileLoader;
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 import renderEngine.*;
@@ -19,10 +18,12 @@ import textures.ModelTexture;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainGameLoop {
-    public static void main(String[] args) {
-        DisplayManager.createDisplay();
-        Loader loader = new Loader();
+public class MainGameLoop
+{
+	public static void main(String[] args)
+	{
+	    DisplayManager.createDisplay();
+	    Loader loader = new Loader();
 
         /*RawModel model = OBJLoader.loadObjModel("stall", loader);
         TexturedModel texturedModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("images/stall")));
@@ -38,7 +39,8 @@ public class MainGameLoop {
 		List<Entity> entities = new ArrayList<Entity>();
         lights.add(new Light(new Vector3f(0, 0, -20), new Vector3f(1, 1, 1)));
 
-        for(int i = 10; i <= 500; i+=20) {
+        for(int i = 10; i <= 500; i+=20)
+		{
 			lights.add(new Light(new Vector3f(i, 3, -90), new Vector3f(1, 1, 1), new Vector3f(1, 0.01f, 0.002f)));
 			entities.add(OBJFileLoader.createModel("stall", i, 0, -100, 0, 180, 0, 1, 10, 1));
 			entities.add(OBJFileLoader.createModel("townhall1", i, 3, -90, 0, 180, 0, 1, 10, 1));
@@ -58,20 +60,18 @@ public class MainGameLoop {
 		//TODO: Teha hiire automaatne muutmine, et ei peaks hoidma all vasakut nuppu.
 		//TODO: Teha object collision detection mis suppordiks ka kaamera liigutusi.
         MasterRenderer renderer = new MasterRenderer(loader);
-        while (!Display.isCloseRequested()) {
+        while(!Display.isCloseRequested())
+		{
         	if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
         		break;
 			}
 
-			//Vaadata kas üksi valgus on meile piisavalt lähedal.
-			//Kui on siis lisada see meile listi.
-			//Kokku vaadata kuni meil on listis 15 valgust.
-			//Kui on vähem, siis suurendada raadiust, iga korraga mingi suurus, kuni tuleb 15 täis.
-
 			List<Light> lightsToRender = new ArrayList<Light>();
 			int i = 5;
-        	while(lightsToRender.size() < 15) {
-				for(Light light : lights) {
+        	while(lightsToRender.size() < 15)
+			{
+				for(Light light:lights)
+				{
 					if(lightsToRender.size() >= 15)
 					{
 						break;
@@ -88,23 +88,23 @@ public class MainGameLoop {
 			}
 
 
-            camera.move();
-            player.move();
+			camera.move();
+			player.move();
 
-            renderer.processEntity(player);
-            renderer.processTerrain(terrain);
-            renderer.processTerrain(terrain2);
+			renderer.processEntity(player);
+			renderer.processTerrain(terrain);
+			renderer.processTerrain(terrain2);
 
-            for(Entity entity:entities) {
+			for(Entity entity:entities) {
 				renderer.processEntity(entity);
 			}
 
 
 			//renderer.processEntity(entity2);
 
-            renderer.render(lightsToRender, camera);
-            DisplayManager.updateDisplay();
-        }
+			renderer.render(lightsToRender, camera);
+			DisplayManager.updateDisplay();
+    	}
 
         renderer.cleanUp();
         loader.cleanUp();

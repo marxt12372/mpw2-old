@@ -5,11 +5,14 @@ import entities.Camera;
 import entities.Entity;
 import entities.Light;
 import entities.Player;
+import gui.GuiRenderer;
+import gui.GuiTexture;
 import models.RawModel;
 import models.TexturedModel;
 import objConverter.OBJFileLoader;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
+import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 import renderEngine.*;
 import terrains.Terrain;
@@ -53,6 +56,11 @@ public class MainGameLoop
 		TexturedModel playerTexture = new TexturedModel(playerModel, new ModelTexture(loader.loadTexture("playerPed")));
         Player player = new Player(playerTexture, new Vector3f(0, 0, -25), 0, 0, 0, 1);
 		Camera camera = new Camera(player);
+
+		List<GuiTexture> guis = new ArrayList<GuiTexture>();
+		guis.add(new GuiTexture(loader.loadTexture("stall"), new Vector2f(0.5f, 0.5f), new Vector2f(0.25f, 0.25f)));
+
+		GuiRenderer guiRenderer = new GuiRenderer(loader);
 
 
         //TODO: Teha Gui, mis ütleb mis staatuses mäng on(Main Menu, Pause Menu, Chatbox open jne.).
@@ -103,9 +111,11 @@ public class MainGameLoop
 			//renderer.processEntity(entity2);
 
 			renderer.render(lightsToRender, camera);
+			guiRenderer.render(guis);
 			DisplayManager.updateDisplay();
     	}
 
+    	guiRenderer.cleanUp();
         renderer.cleanUp();
         loader.cleanUp();
         DisplayManager.closeDisplay();

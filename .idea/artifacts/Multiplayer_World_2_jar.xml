@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Multiplayer World 2:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Multiplayer_World_2_jar</output-path>
+    <root id="archive" name="Multiplayer World 2.jar">
+      <element id="module-output" name="Multiplayer World 2" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/PNGDecoder.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/lwjgl.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/slick-util.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/lwjgl_util.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

@@ -4,6 +4,7 @@ import gui.GuiRenderer;
 import gui.GuiTexture;
 import inputListener.KeyboardListener;
 import inputListener.MouseListener;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector2f;
@@ -16,30 +17,32 @@ import java.util.List;
 public class GameLoop
 {
 	public int gameStatus;
+	public static List<GuiTexture> guis = new ArrayList<GuiTexture>();
 
 	public static void main(String[] args)
 	{
 		DisplayManager.createDisplay();
 		Loader loader = new Loader();
-
-
-
 		GuiRenderer guiRenderer = new GuiRenderer(loader);
 
-		List<GuiTexture> guis = new ArrayList<GuiTexture>();
-		GuiTexture background = new GuiTexture(loader.loadGuiTexture("background"), new Vector2f(1, 1), new Vector2f(1, 1));
+		GuiTexture background = new GuiTexture(loader.loadGuiTexture("background"), new Vector2f(0, 0), new Vector2f(1, 1));
 		guis.add(background);
 		//guis.add(new GuiTexture(loader.loadTexture("stall"), new Vector2f(0.5f, 0.5f), new Vector2f(0.25f, 0.25f)));
 
-		MouseListener mouse = new MouseListener();
-		KeyboardListener keyboard = new KeyboardListener();
+		//Thread thread = new Thread(new MultiPlayerThread());
+		//thread.start();
 
 		while(!Display.isCloseRequested())
 		{
-			mouse.checkInput();
-			keyboard.checkInput();
+			MouseListener mouse = new MouseListener();
+			KeyboardListener keyboard = new KeyboardListener();
+
+			if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
+				break;
+			}
+
 			guiRenderer.render(guis);
-			//Sleep meetood või midagi! Muidu 100% CPU!!!
+			DisplayManager.updateDisplay();
 		}
 
 		guiRenderer.cleanUp();

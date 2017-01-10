@@ -18,6 +18,8 @@ import java.util.List;
 public class GameLoop
 {
 	public static boolean inMultiplayerSession = false;
+	public static String serverIP = null;
+	public static int serverPort = 9667;
 	public static List<GuiTexture> guis = new ArrayList<GuiTexture>();
 
 	public static void main(String[] args)

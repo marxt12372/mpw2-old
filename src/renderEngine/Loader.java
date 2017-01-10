@@ -41,6 +41,15 @@ public class Loader {
 		return new RawModel(vaoID, positions.length/2);
 	}
 
+	public int loadToVAO(float[] positions, float[] textureCoords)
+	{
+		int vaoID = createVAO();
+		storeDataInAttributeList(0, 2, positions);
+		storeDataInAttributeList(0, 2, textureCoords);
+		unbindVAO();
+		return vaoID;
+	}
+
 	public int loadTexture(String fileName)
 	{
 		Texture texture = null;
@@ -66,7 +75,7 @@ public class Loader {
 			texture = TextureLoader.getTexture("PNG", new FileInputStream("guis/"+fileName+".png"));
 			GL30.glGenerateMipmap(GL11.GL_TEXTURE_2D);
 			GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR_MIPMAP_LINEAR);
-			GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL14.GL_TEXTURE_LOD_BIAS, -0.5f);
+			GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL14.GL_TEXTURE_LOD_BIAS, 0f);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

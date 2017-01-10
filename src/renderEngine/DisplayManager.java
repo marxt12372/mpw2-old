@@ -9,7 +9,7 @@ public class DisplayManager
 {
     public static final int WIDTH = 1280;
     public static final int HEIGHT = 720;
-    public static final int FPS_CAP = 120;
+    public static final int FPS_CAP = 400;
 
     private static long lastFrameTime;
     private static float delta;
@@ -20,6 +20,7 @@ public class DisplayManager
 
         try {
             Display.setDisplayMode(new DisplayMode(WIDTH, HEIGHT));
+            Display.setResizable(true);
             Display.create(new PixelFormat(), attribs);
             Display.setTitle("Multiplayer World 2");
         }
@@ -28,12 +29,13 @@ public class DisplayManager
             e.printStackTrace();
         }
 
-        GL11.glViewport(0,0, WIDTH, HEIGHT);
+        GL11.glViewport(0,0, Display.getWidth(), Display.getHeight());
         lastFrameTime = getCurrentTime();
     }
 
     public static void updateDisplay()
     {
+		GL11.glViewport(0,0, Display.getWidth(), Display.getHeight());
         Display.sync(FPS_CAP);
         Display.update();
         long currentFrameTime = getCurrentTime();

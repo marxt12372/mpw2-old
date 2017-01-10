@@ -7,6 +7,7 @@ import inputListener.MouseListener;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector2f;
 import renderEngine.DisplayManager;
 import renderEngine.Loader;
@@ -16,7 +17,7 @@ import java.util.List;
 
 public class GameLoop
 {
-	public int gameStatus;
+	public static boolean inMultiplayerSession = false;
 	public static List<GuiTexture> guis = new ArrayList<GuiTexture>();
 
 	public static void main(String[] args)
@@ -41,7 +42,14 @@ public class GameLoop
 				break;
 			}
 
-			guiRenderer.render(guis);
+			if(!inMultiplayerSession) //In main manu
+			{
+				guiRenderer.render(guis);
+			}
+			else //In a game.
+			{
+				guiRenderer.render(guis);
+			}
 			DisplayManager.updateDisplay();
 		}
 

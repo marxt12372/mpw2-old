@@ -4,13 +4,13 @@ int main(int argc, char * argv[])
 {
 	int listenfd;
 	struct timeval timeout;
-	struct sockaddr_in servaddr, cliaddr;
+	struct sockaddr_in servaddr;
+	struct sockaddr_in cliaddr;
 	socklen_t cliaddrlen;
-	size_t nbytes;
 	char buffer[512];
 	int n;
 
-	if((listenfd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+	if((listenfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
 	{
 		printf("Socket creation failed");
 		return 0;
@@ -43,11 +43,16 @@ int main(int argc, char * argv[])
 			printf("Buffer: %s\n", buffer);
 			bzero(buffer, 63);
 		}*/
-		if(recvfrom(listenfd, buffer, sizeof(buffer), nbytes, 0, cliaddr, cliaddrlen))
+		bzero((char *) &cliaddr, sizeof(cliaddr));
+		bzero((char *) &cliaddrlen, sizeof(cliaddrlen));
+		cliaddrlen = sizeof(struct sockaddr_in);
+		if(recvfrom(listenfd, buffer, sizeof(buffer), 0, (struct sockaddr *) &cliaddr, (socklen_t *)&cliaddrlen))
 		{
-			
 		}
-		usleep(100000);
+		printf("From: %s, Message: %s\n", inet_ntoa(cliaddr.sin_addr), buffer);
+		bzero(buffer, sizeof(buffer));
+		usleep(1000);
 	}
+	close(listenfd);
 	return 1;
 }

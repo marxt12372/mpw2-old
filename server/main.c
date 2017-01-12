@@ -2,11 +2,12 @@
 
 int main(int argc, char * argv[])
 {
-	int listenfd, connfd;
+	int listenfd;
 	struct timeval timeout;
 	struct sockaddr_in servaddr, cliaddr;
-	socklen_t clilen;
-	char buffer[64];
+	socklen_t cliaddrlen;
+	size_t nbytes;
+	char buffer[512];
 	int n;
 
 	if((listenfd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
@@ -20,7 +21,7 @@ int main(int argc, char * argv[])
 	memset((void *) &servaddr, '\0', (size_t) sizeof(servaddr));
 	servaddr.sin_family = AF_INET;
 	servaddr.sin_addr.s_addr = INADDR_ANY;
-	servaddr.sin_port = htons(35000);
+	servaddr.sin_port = htons(9667);
 
 	if(bind(listenfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) < 0)
 	{
@@ -28,15 +29,9 @@ int main(int argc, char * argv[])
 		return 0;
 	}
 
-	if(listen(listenfd, 5) < 0)
-	{
-		printf("Listen Error");
-		return 0;
-	}
-
 	while(1)
 	{
-		clilen = sizeof((struct sockaddr *) &cliaddr);
+		/*clilen = sizeof((struct sockaddr *) &cliaddr);
 		if((connfd = accept(listenfd, (struct sockaddr *) &cliaddr, &clilen)) < 0)
 		{
 			printf("Accept Error.\n");
@@ -47,6 +42,10 @@ int main(int argc, char * argv[])
 		{
 			printf("Buffer: %s\n", buffer);
 			bzero(buffer, 63);
+		}*/
+		if(recvfrom(listenfd, buffer, sizeof(buffer), nbytes, 0, cliaddr, cliaddrlen))
+		{
+			
 		}
 		usleep(100000);
 	}

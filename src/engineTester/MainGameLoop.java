@@ -18,6 +18,7 @@ import renderEngine.*;
 import terrains.Terrain;
 import textures.ModelTexture;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 

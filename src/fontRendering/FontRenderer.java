@@ -37,14 +37,16 @@ public class FontRenderer {
 		shader.cleanUp();
 	}
 	
-	private void prepare(){
+	private void prepare()
+	{
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL11.glDisable(GL11.GL_DEPTH_TEST);
 		shader.start();
 	}
 	
-	private void renderText(GUIText text){
+	private void renderText(GUIText text)
+	{
 		GL30.glBindVertexArray(text.getMesh());
 		GL20.glEnableVertexAttribArray(0);
 		GL20.glEnableVertexAttribArray(1);
@@ -56,7 +58,8 @@ public class FontRenderer {
 		GL30.glBindVertexArray(0);
 	}
 	
-	private void endRendering(){
+	private void endRendering()
+	{
 		shader.stop();
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glEnable(GL11.GL_DEPTH_TEST);

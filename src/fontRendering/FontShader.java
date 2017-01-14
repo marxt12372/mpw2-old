@@ -11,7 +11,7 @@ public class FontShader extends ShaderProgram{
 
 	private int location_colour;
 	private int location_translation;
-
+	
 	public FontShader() {
 		super(VERTEX_FILE, FRAGMENT_FILE);
 	}
@@ -26,8 +26,7 @@ public class FontShader extends ShaderProgram{
 	@Override
 	protected void bindAttributes() {
 		super.bindAttribute(0, "position");
-		super.bindAttribute(1, "textureCords");
-
+		super.bindAttribute(1, "textureCoords");
 	}
 
 	protected void loadColour(Vector3f colour)
@@ -39,6 +38,4 @@ public class FontShader extends ShaderProgram{
 	{
 		super.load2DVector(location_translation, translation);
 	}
-
-
 }

@@ -45,7 +45,7 @@ public class Loader {
 	{
 		int vaoID = createVAO();
 		storeDataInAttributeList(0, 2, positions);
-		storeDataInAttributeList(0, 2, textureCoords);
+		storeDataInAttributeList(1, 2, textureCoords);
 		unbindVAO();
 		return vaoID;
 	}

@@ -17,11 +17,12 @@ public class DisplayManager
     public static void createDisplay()
     {
         ContextAttribs attribs = new ContextAttribs(3,2).withForwardCompatible(true).withProfileCore(true);
+        PixelFormat pixelFormat = new PixelFormat();
 
         try {
             Display.setDisplayMode(new DisplayMode(WIDTH, HEIGHT));
             Display.setResizable(true);
-            Display.create(new PixelFormat(), attribs);
+            Display.create(pixelFormat, attribs);
             Display.setTitle("Multiplayer World 2");
         }
         catch(LWJGLException e)

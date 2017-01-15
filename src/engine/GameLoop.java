@@ -8,6 +8,7 @@ import gui.GuiTexture;
 import inputListener.KeyboardListener;
 import inputListener.MouseListener;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.Color;
@@ -20,12 +21,24 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 public class GameLoop
 {
 	public static boolean inMultiplayerSession = false;
+	public static int menuLocation = 0;
 	public static String serverIP = null;
 	public static int serverPort = 9667;
 	public static List<GuiTexture> guis = new ArrayList<GuiTexture>();
+
+	public static FontType font;
+
+	public static GUIText connectText;
+	public static GUIText settingsText;
+	public static GUIText quitText;
+	public static GUIText joinText;
+	public static GUIText ipText;
+	public static GUIText backText;
 
 	public static void main(String[] args)
 	{
@@ -33,10 +46,14 @@ public class GameLoop
 		Loader loader = new Loader();
 		GuiRenderer guiRenderer = new GuiRenderer(loader);
 		TextMaster.init(loader);
+		MainMenuGenerator mainMenuGenerator = new MainMenuGenerator();
+		MouseListener mouseListener = new MouseListener();
 
-		FontType font = new FontType(loader.loadGuiTexture("gentium"), new File("guis/gentium.fnt"));
-		GUIText text = new GUIText("Hello", 1, font, new Vector2f(0.0f, 0.0f), 1f, true);
-		text.setColour(0, 0, 1);
+		font = new FontType(loader.loadGuiTexture("gentium"), new File("guis/gentium.fnt"));
+
+		mainMenuGenerator.generateMainMenu();
+
+
 
 		GuiTexture background = new GuiTexture(loader.loadGuiTexture("background"), new Vector2f(0, 0), new Vector2f(1, 1));
 		guis.add(background);
@@ -47,22 +64,24 @@ public class GameLoop
 
 		while(!Display.isCloseRequested())
 		{
-			MouseListener mouse = new MouseListener();
-			KeyboardListener keyboard = new KeyboardListener();
+			//MouseListener mouse = new MouseListener();
+			//KeyboardListener keyboard = new KeyboardListener();
 
-			if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
+			/*if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
 				break;
-			}
+			}*/
+			//Vector2f mousePos = mouseListener.getMouseFontPosition();
+			//System.out.println("X: " + mousePos.getX() + "          Y: " + mousePos.getY());
 
 			if(!inMultiplayerSession) //In main manu
 			{
-				guiRenderer.render(guis);
+				mainMenuGenerator.updateMainMenu();
 			}
 			else //In a game.
 			{
-				guiRenderer.render(guis);
 			}
 
+			guiRenderer.render(guis);
 			TextMaster.render();
 			DisplayManager.updateDisplay();
 		}

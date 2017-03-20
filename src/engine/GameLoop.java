@@ -46,40 +46,23 @@ public class GameLoop
 		Loader loader = new Loader();
 		GuiRenderer guiRenderer = new GuiRenderer(loader);
 		TextMaster.init(loader);
-		MainMenuGenerator mainMenuGenerator = new MainMenuGenerator();
-		MouseListener mouseListener = new MouseListener();
 
 		font = new FontType(loader.loadGuiTexture("gentium"), new File("guis/gentium.fnt"));
 
-		mainMenuGenerator.generateMainMenu();
+		//mainMenuGenerator.generateMainMenu();
 
 
 
-		GuiTexture background = new GuiTexture(loader.loadGuiTexture("background"), new Vector2f(0, 0), new Vector2f(1, 1));
-		guis.add(background);
+		/*GuiTexture background = new GuiTexture(loader.loadGuiTexture("background"), new Vector2f(0, 0), new Vector2f(1, 1));
+		guis.add(background);*/
 		//guis.add(new GuiTexture(loader.loadTexture("stall"), new Vector2f(0.5f, 0.5f), new Vector2f(0.25f, 0.25f)));
 
-		//Thread thread = new Thread(new MultiPlayerThread());
-		//thread.start();
+		//Thread mpthread = new Thread(new MultiPlayerThread());
+		//mpthread.start();
 
 		while(!Display.isCloseRequested())
 		{
-			//MouseListener mouse = new MouseListener();
-			//KeyboardListener keyboard = new KeyboardListener();
 
-			/*if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
-				break;
-			}*/
-			//Vector2f mousePos = mouseListener.getMouseFontPosition();
-			//System.out.println("X: " + mousePos.getX() + "          Y: " + mousePos.getY());
-
-			if(!inMultiplayerSession) //In main manu
-			{
-				mainMenuGenerator.updateMainMenu();
-			}
-			else //In a game.
-			{
-			}
 
 			guiRenderer.render(guis);
 			TextMaster.render();

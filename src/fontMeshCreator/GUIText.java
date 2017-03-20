@@ -70,6 +70,18 @@ public class GUIText {
 		TextMaster.removeText(this);
 	}
 
+	public void setTextSize(float newSize)
+	{
+		this.fontSize = newSize;
+		TextMaster.updateText(this);
+	}
+
+	public void setTextString(String newString)
+	{
+		this.textString = newString;
+		TextMaster.updateText(this);
+	}
+
 	/**
 	 * @return The font used by this text.
 	 */

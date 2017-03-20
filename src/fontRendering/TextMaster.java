@@ -43,6 +43,19 @@ public class TextMaster
 		textBatch.add(text);
 	}
 
+	public static void updateText(GUIText text)
+	{
+		FontType font = text.getFont();
+		TextMeshData data = font.loadText(text);
+		int vao = loader.loadToVAO(data.getVertexPositions(), data.getTextureCoords());
+		text.setMeshInfo(vao, data.getVertexCount());
+		List<GUIText> textBatch = texts.get(font);
+		if(!textBatch.isEmpty()) {
+			texts.remove(font);
+			texts.put(font, textBatch);
+		}
+	}
+
 	public static void removeText(GUIText text)
 	{
 		List<GUIText> textBatch = texts.get(text.getFont());

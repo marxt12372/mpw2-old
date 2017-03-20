@@ -13,7 +13,9 @@ public class Camera
     private Vector3f position = new Vector3f(0, 3.5f, 0);
     private float distanceFromPlayer = 50;
     private float angleAroundPlayer = 0;
+    private float oldangleAroundPlayer = DisplayManager.WIDTH/2;
     private float pitch = 20;
+    private float oldpitch = DisplayManager.HEIGHT/2;
     private float yaw;
     private float roll;
 
@@ -26,13 +28,18 @@ public class Camera
 
     public void move() {
 		calculateZoom();
-		calculatePitch();
-		calculateAngleAroundPlayer();
+		calculateCameraPosition();
 		float horizontalDistance = calculateHorizontalDistance();
 		float verticalDistance = calculateVerticalDistance();
 		calculateCameraPosition(horizontalDistance, verticalDistance);
 		this.yaw = 180 - (player.getRotY() + angleAroundPlayer);
+		//recenterMouse();
     }
+
+    private void recenterMouse()
+	{
+		Mouse.setCursorPosition(DisplayManager.WIDTH/2, DisplayManager.HEIGHT/2);
+	}
 
     public Vector3f getPosition() {
         return position;
@@ -58,6 +65,7 @@ public class Camera
 		position.x = player.getPosition().x - offsetX;
 		position.z = player.getPosition().z - offsetZ;
 		position.y = player.getPosition().y + verticDistance;
+
 	}
 
 	private float calculateHorizontalDistance()
@@ -76,19 +84,29 @@ public class Camera
 		distanceFromPlayer -= zoomLevel;
 	}
 
-	private void calculatePitch()
+	private void calculateCameraPosition()
 	{
-		if(Mouse.isButtonDown(1)) {
-			float pitchChange = Mouse.getDY() * 0.1f;
-			pitch -= pitchChange;
-		}
+		float angleChange = Mouse.getX();
+		float pitchChange = Mouse.getY();
+		recenterMouse();
+
+		angleChange = (angleChange/(DisplayManager.WIDTH/2))-1;
+		pitchChange = (pitchChange/(DisplayManager.HEIGHT/2))-1;
+
+		pitch -= pitchChange * 40f;
+		angleAroundPlayer -= angleChange * 120f;
 	}
 
-	private void calculateAngleAroundPlayer()
+	/*private void calculateAngleAroundPlayer()
 	{
-		if(Mouse.isButtonDown(1)) {
-			float angleChange = Mouse.getDX() * 0.3f;
-			angleAroundPlayer -= angleChange;
+		float angleChange = Mouse.getDX();
+		if(oldangleAroundPlayer < angleChange) {
+			angleAroundPlayer -= angleChange * 0.1f;
+			oldangleAroundPlayer = angleChange;
 		}
-	}
+		else if(oldangleAroundPlayer > angleChange) {
+			angleAroundPlayer += angleChange * 0.1f;
+			oldangleAroundPlayer = -angleChange;
+		}
+	}*/
 }

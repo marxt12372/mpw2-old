@@ -43,6 +43,8 @@ public class MainGameLoop
 		List<Entity> entities = new ArrayList<Entity>();
         lights.add(new Light(new Vector3f(0, 0, -20), new Vector3f(1, 1, 1)));
 
+		entities.add(OBJFileLoader.createModel("barracksbuilding1", 1, 1, 1, 0, 0, 0, 1, 10, 1));
+
         for(int i = 10; i <= 500; i+=20)
 		{
 			lights.add(new Light(new Vector3f(i, 3, -90), new Vector3f(1, 1, 1), new Vector3f(1, 0.01f, 0.002f)));
@@ -59,7 +61,7 @@ public class MainGameLoop
 		Camera camera = new Camera(player);
 
 		List<GuiTexture> guis = new ArrayList<GuiTexture>();
-		guis.add(new GuiTexture(loader.loadTexture("stall"), new Vector2f(0.5f, 0.5f), new Vector2f(0.25f, 0.25f)));
+		//guis.add(new GuiTexture(loader.loadTexture("stall"), new Vector2f(0.5f, 0.5f), new Vector2f(0.25f, 0.25f)));
 
 		GuiRenderer guiRenderer = new GuiRenderer(loader);
 

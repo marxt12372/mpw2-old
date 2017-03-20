@@ -33,7 +33,6 @@ public class Camera
 		float verticalDistance = calculateVerticalDistance();
 		calculateCameraPosition(horizontalDistance, verticalDistance);
 		this.yaw = 180 - (player.getRotY() + angleAroundPlayer);
-		//recenterMouse();
     }
 
     private void recenterMouse()
@@ -96,17 +95,4 @@ public class Camera
 		pitch -= pitchChange * 40f;
 		angleAroundPlayer -= angleChange * 120f;
 	}
-
-	/*private void calculateAngleAroundPlayer()
-	{
-		float angleChange = Mouse.getDX();
-		if(oldangleAroundPlayer < angleChange) {
-			angleAroundPlayer -= angleChange * 0.1f;
-			oldangleAroundPlayer = angleChange;
-		}
-		else if(oldangleAroundPlayer > angleChange) {
-			angleAroundPlayer += angleChange * 0.1f;
-			oldangleAroundPlayer = -angleChange;
-		}
-	}*/
 }

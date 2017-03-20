@@ -15,6 +15,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.TrueTypeFont;
 import renderEngine.DisplayManager;
 import renderEngine.Loader;
+import renderEngine.MasterRenderer;
 
 import java.awt.*;
 import java.io.File;
@@ -26,19 +27,11 @@ import static java.lang.Thread.sleep;
 public class GameLoop
 {
 	public static boolean inMultiplayerSession = false;
-	public static int menuLocation = 0;
+	public static int menuLocation = MENU.Startup;
 	public static String serverIP = null;
 	public static int serverPort = 9667;
-	public static List<GuiTexture> guis = new ArrayList<GuiTexture>();
 
 	public static FontType font;
-
-	public static GUIText connectText;
-	public static GUIText settingsText;
-	public static GUIText quitText;
-	public static GUIText joinText;
-	public static GUIText ipText;
-	public static GUIText backText;
 
 	public static void main(String[] args)
 	{
@@ -47,28 +40,64 @@ public class GameLoop
 		GuiRenderer guiRenderer = new GuiRenderer(loader);
 		TextMaster.init(loader);
 
+		MenuGenerator menuGenerator = new MenuGenerator(loader);
+		MouseListener mouseListener = new MouseListener();
+		KeyboardListener keyboardListener = new KeyboardListener();
+
 		font = new FontType(loader.loadGuiTexture("gentium"), new File("guis/gentium.fnt"));
 
 		//mainMenuGenerator.generateMainMenu();
 
 
-
-		/*GuiTexture background = new GuiTexture(loader.loadGuiTexture("background"), new Vector2f(0, 0), new Vector2f(1, 1));
-		guis.add(background);*/
-		//guis.add(new GuiTexture(loader.loadTexture("stall"), new Vector2f(0.5f, 0.5f), new Vector2f(0.25f, 0.25f)));
+		/*background = new GuiTexture(loader.loadGuiTexture("background"), new Vector2f(0, 0), new Vector2f(0.5f, 0.5f));
+		guis2.add(background);
+		guis2.add(new GuiTexture(loader.loadTexture("stall"), new Vector2f(0.5f, 0.5f), new Vector2f(0.25f, 0.25f)));*/
 
 		//Thread mpthread = new Thread(new MultiPlayerThread());
 		//mpthread.start();
 
+		MasterRenderer renderer = new MasterRenderer(loader);
 		while(!Display.isCloseRequested())
 		{
+			keyboardListener.checkInput();
 
+			if(menuLocation == MENU.Startup) {
 
-			guiRenderer.render(guis);
+				guiRenderer.render(menuGenerator.getBackgroundList());
+				//menuGenerator.generateStartupMenuText();
+				mouseListener.checkInput(Mouse.getX(), Mouse.getY());
+			}
+			else if(menuLocation == MENU.In_Game)
+			{
+				if(inMultiplayerSession == true)
+				{
+					//guiRenderer.render(guis2);
+				}
+			}
+			else if(menuLocation == MENU.Main_Menu)
+			{
+				mouseListener.checkInput(Mouse.getX(), Mouse.getY());
+			}
+			else if(menuLocation == MENU.Connect_Menu)
+			{
+				guiRenderer.render(menuGenerator.getBackgroundList());
+				//menuGenerator.generateConnectMenuText();
+				mouseListener.checkInput(Mouse.getX(), Mouse.getY());
+			}
+			else if(menuLocation == MENU.Settings_Menu)
+			{
+				guiRenderer.render(menuGenerator.getBackgroundList());
+				//menuGenerator.generateSettingsMenuText();
+				mouseListener.checkInput(Mouse.getX(), Mouse.getY());
+			}
+
 			TextMaster.render();
 			DisplayManager.updateDisplay();
 		}
 
+		guiRenderer.cleanUp();
+		renderer.cleanUp();
+		loader.cleanUp();
 		TextMaster.cleanUp();
 		guiRenderer.cleanUp();
 	}

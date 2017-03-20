@@ -6,7 +6,7 @@ import org.lwjgl.util.vector.Vector2f;
 
 public class MouseListener
 {
-	public void checkInput()
+	public void checkInput(float x, float y)
 	{
 	}
 

@@ -1,5 +1,9 @@
 package engine;
 
+import entities.Camera;
+import entities.Entity;
+import entities.Light;
+import entities.Player;
 import fontMeshCreator.FontType;
 import fontMeshCreator.GUIText;
 import fontRendering.TextMaster;
@@ -7,15 +11,21 @@ import gui.GuiRenderer;
 import gui.GuiTexture;
 import inputListener.KeyboardListener;
 import inputListener.MouseListener;
+import models.RawModel;
+import models.TexturedModel;
+import objConverter.OBJFileLoader;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector2f;
+import org.lwjgl.util.vector.Vector3f;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.TrueTypeFont;
 import renderEngine.DisplayManager;
 import renderEngine.Loader;
 import renderEngine.MasterRenderer;
+import terrains.Terrain;
+import textures.ModelTexture;
 
 import java.awt.*;
 import java.io.File;
@@ -31,7 +41,7 @@ public class GameLoop
 	public static String serverIP = null;
 	public static int serverPort = 9667;
 
-	public static FontType font;
+	public static FontType font_gentium;
 
 	public static void main(String[] args)
 	{
@@ -40,13 +50,43 @@ public class GameLoop
 		GuiRenderer guiRenderer = new GuiRenderer(loader);
 		TextMaster.init(loader);
 
+		font_gentium = new FontType(loader.loadGuiTexture("gentium"), new File("guis/gentium.fnt"));
+
 		MenuGenerator menuGenerator = new MenuGenerator(loader);
 		MouseListener mouseListener = new MouseListener();
 		KeyboardListener keyboardListener = new KeyboardListener();
 
-		font = new FontType(loader.loadGuiTexture("gentium"), new File("guis/gentium.fnt"));
+		/**
+		 *
+		 * To be replaced by something that reads them from a file.
+		 *
+		 */
 
-		//mainMenuGenerator.generateMainMenu();
+		List<Light> lights = new ArrayList<Light>();
+		List<Entity> entities = new ArrayList<Entity>();
+		lights.add(new Light(new Vector3f(0, 0, -20), new Vector3f(1, 1, 1)));
+
+		entities.add(OBJFileLoader.createModel("barracksbuilding1", 1, 1, 1, 0, 0, 0, 1, 10, 1));
+
+		for(int i = 10; i <= 500; i+=20)
+		{
+			lights.add(new Light(new Vector3f(i, 3, -90), new Vector3f(1, 1, 1), new Vector3f(1, 0.01f, 0.002f)));
+			entities.add(OBJFileLoader.createModel("stall", i, 0, -100, 0, 180, 0, 1, 10, 1));
+			entities.add(OBJFileLoader.createModel("townhall1", i, 3, -90, 0, 180, 0, 1, 10, 1));
+		}
+
+		RawModel playerModel = OBJFileLoader.loadModel("playerPed");
+		TexturedModel playerTexture = new TexturedModel(playerModel, new ModelTexture(loader.loadTexture("playerPed")));
+		Player player = new Player(playerTexture, new Vector3f(0, 0, -25), 0, 0, 0, 1);
+		Camera camera = new Camera(player);
+
+		/**
+		 *
+		 * End of replacement.
+		 *
+		 */
+
+		MenuGenerator.generateStartupMenuText();
 
 
 		/*background = new GuiTexture(loader.loadGuiTexture("background"), new Vector2f(0, 0), new Vector2f(0.5f, 0.5f));
@@ -64,31 +104,66 @@ public class GameLoop
 			if(menuLocation == MENU.Startup) {
 
 				guiRenderer.render(menuGenerator.getBackgroundList());
-				//menuGenerator.generateStartupMenuText();
-				mouseListener.checkInput(Mouse.getX(), Mouse.getY());
+				//MenuGenerator.generateStartupMenuText();
+				mouseListener.checkInput();
 			}
 			else if(menuLocation == MENU.In_Game)
 			{
 				if(inMultiplayerSession == true)
 				{
-					//guiRenderer.render(guis2);
+					List<Light> lightsToRender = new ArrayList<Light>();
+					int i = 5;
+					while(lightsToRender.size() < 15)
+					{
+						for(Light light:lights)
+						{
+							if(lightsToRender.size() >= 15)
+							{
+								break;
+							}
+							if((((light.getPosition().x - camera.getPosition().x) < i) && ((light.getPosition().x - camera.getPosition().x) > -i)) && (((light.getPosition().y - camera.getPosition().y) < i) && ((light.getPosition().y - camera.getPosition().y) > -i)) && (((light.getPosition().z - camera.getPosition().z) < i) && ((light.getPosition().z - camera.getPosition().z) > -i)))
+							{
+								if(lightsToRender.size() < 15 && !lightsToRender.contains(light))
+								{
+									lightsToRender.add(light);
+								}
+							}
+						}
+						i += 5;
+					}
+
+
+					camera.move();
+					player.move();
+
+					renderer.processEntity(player);
+
+					for(Entity entity:entities) {
+						renderer.processEntity(entity);
+					}
+
+
+					//renderer.processEntity(entity2);
+
+					renderer.render(lightsToRender, camera);
+					//guiRenderer.render(guis);
 				}
 			}
 			else if(menuLocation == MENU.Main_Menu)
 			{
-				mouseListener.checkInput(Mouse.getX(), Mouse.getY());
+				mouseListener.checkInput();
 			}
 			else if(menuLocation == MENU.Connect_Menu)
 			{
 				guiRenderer.render(menuGenerator.getBackgroundList());
-				//menuGenerator.generateConnectMenuText();
-				mouseListener.checkInput(Mouse.getX(), Mouse.getY());
+				//MenuGenerator.generateConnectMenuText();
+				mouseListener.checkInput();
 			}
 			else if(menuLocation == MENU.Settings_Menu)
 			{
 				guiRenderer.render(menuGenerator.getBackgroundList());
-				//menuGenerator.generateSettingsMenuText();
-				mouseListener.checkInput(Mouse.getX(), Mouse.getY());
+				//MenuGenerator.generateSettingsMenuText();
+				mouseListener.checkInput();
 			}
 
 			TextMaster.render();

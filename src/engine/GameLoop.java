@@ -38,6 +38,7 @@ public class GameLoop
 {
 	public static boolean inMultiplayerSession = false;
 	public static int menuLocation = MENU.Startup;
+	public static int textOpen = MENU.None;
 	public static String serverIP = null;
 	public static int serverPort = 9667;
 
@@ -160,6 +161,12 @@ public class GameLoop
 				mouseListener.checkInput();
 			}
 			else if(menuLocation == MENU.Settings_Menu)
+			{
+				guiRenderer.render(menuGenerator.getBackgroundList());
+				//MenuGenerator.generateSettingsMenuText();
+				mouseListener.checkInput();
+			}
+			else if(menuLocation == MENU.Connecting)
 			{
 				guiRenderer.render(menuGenerator.getBackgroundList());
 				//MenuGenerator.generateSettingsMenuText();

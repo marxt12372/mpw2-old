@@ -11,12 +11,18 @@ import java.util.List;
 
 public class MenuGenerator
 {
-	private List<GuiTexture> background = new ArrayList<GuiTexture>();
+	private static List<GuiTexture> background = new ArrayList<GuiTexture>();
 	private static List<GUIText> currentText = new ArrayList<GUIText>();
 
 	public static GUIText connecttekst;
+	public static GUIText connectbuttontekst;
+	public static GUIText connectname;
+	public static GUIText connectip;
+
 	public static GUIText settingstekst;
+
 	public static GUIText quittekst;
+
 	public static GUIText backtekst;
 
 	public MenuGenerator(Loader loader)
@@ -37,6 +43,32 @@ public class MenuGenerator
 		backtekst = new GUIText("Back", 1.35f, GameLoop.font_gentium, new Vector2f(0.1f, 0.1f), 1, false);
 		TextMaster.loadText(backtekst);
 		currentText.add(backtekst);
+
+		connectname = new GUIText("Name", 1.35f, GameLoop.font_gentium, new Vector2f(0f, 0.44f), 1, true);
+		TextMaster.loadText(connectname);
+		currentText.add(connectname);
+
+		connectip = new GUIText("IP", 1.35f, GameLoop.font_gentium, new Vector2f(0f, 0.5f), 1, true);
+		TextMaster.loadText(connectip);
+		currentText.add(connectip);
+
+		connectbuttontekst = new GUIText("Connect", 1.35f, GameLoop.font_gentium, new Vector2f(0f, 0.56f), 1, true);
+		TextMaster.loadText(connectbuttontekst);
+		currentText.add(connectbuttontekst);
+	}
+
+	public static void generateConnectMenuConnectingText()
+	{
+		removeAllCurrentText();
+
+		backtekst = new GUIText("Back", 1.35f, GameLoop.font_gentium, new Vector2f(0.1f, 0.1f), 1, false);
+		TextMaster.loadText(backtekst);
+		currentText.add(backtekst);
+
+		connecttekst = new GUIText("Connecting to the server", 1.35f, GameLoop.font_gentium, new Vector2f(0f, 0.4f), 1, true);
+		connecttekst.setColour(0, 0.729411765f, 0.023529412f);
+		TextMaster.loadText(connecttekst);
+		currentText.add(connecttekst);
 	}
 
 	public static void generateSettingsMenuText()
@@ -70,11 +102,11 @@ public class MenuGenerator
 		for(GUIText tekst:currentText)
 		{
 			TextMaster.removeText(tekst);
-			currentText.remove(tekst);
 		}
+		currentText.clear();
 	}
 
-	public List<GuiTexture> getBackgroundList()
+	public static List<GuiTexture> getBackgroundList()
 	{
 		return background;
 	}

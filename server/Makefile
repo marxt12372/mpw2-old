@@ -1,2 +1,5 @@
 all:
-	gcc main.c -o main -lpthread
+	c++ -c *.cpp
+
+compile:
+	c++ *.o

@@ -1,5 +1,5 @@
 all:
-	c++ -c *.cpp
+	c++ -std=c++11 -c *.cpp
 
 compile:
 	c++ *.o

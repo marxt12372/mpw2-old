@@ -12,7 +12,7 @@ class Vector3
 		static std::set<Vector3 *> _vector3List;
 		//static Vector3 * _vector3List2;
 	public:
-		Vector3(float x, float y, float z);
+		Vector3(float x = 0.0, float y = 0.0, float z = 0.0);
 		~Vector3();
 		static std::set<Vector3 *> getVectorList();
 		float X;

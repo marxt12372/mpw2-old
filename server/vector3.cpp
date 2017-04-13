@@ -2,12 +2,12 @@
 
 std::set<Vector3 *> Vector3::_vector3List;
 
-Vector3::Vector3(float x = 0.0, float y = 0.0, float z = 0.0)
+Vector3::Vector3(float x, float y, float z)
 {
 	X = x;
 	Y = y;
 	Z = z;
-	std::cout << "Vector3 Constructor Called" << endl;
+	//std::cout << "Vector3 Constructor Called" << endl;
 	_vector3List.insert(this);
 }
 

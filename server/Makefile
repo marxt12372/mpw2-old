@@ -1,5 +1,5 @@
 all:
-	c++ -std=c++11 -c *.cpp
+	c++ -std=c++11 -lpthread -c *.cpp
 
 compile:
-	c++ *.o
+	c++ -lpthread *.o

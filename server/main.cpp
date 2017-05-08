@@ -29,7 +29,7 @@ int fd;
 
 int main()
 {
-	//std::thread updateThread(updatingThread);
+	std::thread updateThread(updatingThread);
 
 	if((fd = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
 	{
@@ -53,23 +53,27 @@ int main()
 	char buffer[256];
 	int recvlen;
 
-	/*while(true)
+	while(true)
 	{
 		recvlen = recvfrom(fd, buffer, sizeof(buffer), 0, (struct sockaddr *) &remaddr, &addrlen);
 		//printf("%s>%s\n", inet_ntoa(remaddr.sin_addr), buffer);
 		char name[32];
 		float x, y, z, rx, ry, rz;
-		if(std::sscanf(buffer, "conn|%s", &name))
+		if(std::sscanf(buffer, "conn %s", &name))
 		{
 			printf("New connection from %s, with the name %s\n", inet_ntoa(remaddr.sin_addr), name);
-			Player newPlayer((char *) name);
+			new Player((char *) name, inet_ntoa(remaddr.sin_addr));
 		}
 		else if(std::sscanf(buffer, "move %s to %f,%f,%f,%f,%f,%f", &name, &x, &y, &z, &rx, &ry, &rz))
 		{
-			printf("%s moved to: %f %f %f %f %f %f\n", name, x, y, z, rx, ry, rz);
+			Player * player = Player::getPlayerFromName(name);
+			printf("%s moved to: %f %f %f %f %f %f\n", player->getName(), x, y, z, rx, ry, rz);
+			//Player * player = Player::getPlayerFromName(name);
+			player->setPosition(Vector3(x, y, z));
+			player->setRotation(Vector3(rx, ry, rz));
 		}
 		bzero(buffer, sizeof(buffer)-1);
-	}*/
+	}
 
 	//updateThread.join();
 
@@ -87,28 +91,34 @@ int main()
 	connThread.join();
 	updateThread.join();*/
 
-	Vector3 vec1(5, 2, 4);
-	Vector3 vec2(10, 4, 8);
-	Vector3 vec3(15, 6, 12);
-	Vector3 vec4(20, 8, 16);
+	/*Vector3* vec = new Vector3(5, 2, 4);
+	Vector3* vec2 = new Vector3(10, 4, 8);
+	Vector3* vec3 = new Vector3(15, 6, 12);
+	Vector3* vec4 = new Vector3(20, 8, 16);
+
+	cout << "vec1 X: " << vec->X << endl;
 
 	for(auto vec : Vector3::getVectorList())
 	{
 		cout << "X: " << vec->X << ", Y: " << vec->Y << ", Z: " << vec->Z << endl;
-		Vector3 vec222(vec->X+vec->Y, 2, 4);
-		cout << "X: " << vec222.X << ", Y: " << vec222.Y << ", Z: " << vec222.Z << endl;
-		usleep(1000000);
+		Vector3* vec222 = new Vector3(vec->X+vec->Y, 2, 4);
+		cout << "X: " << vec222->X << ", Y: " << vec222->Y << ", Z: " << vec222->Z << endl;
+		//usleep(100000);
 		//cout << "X: " << (*it)->X << ", Y: " << (*it)->Y << ", Z: " << (*it)->Z << endl;
 	}
 
-	Vector3 vec5(25, 10, 20);
-	Vector3 vec6(30, 12, 24);
+	cout << endl;
+
+	//Vector3 vec5(25, 10, 20);
+	//Vector3 vec6(30, 12, 24);
 
 	for(auto vec : Vector3::getVectorList())
 	{
 		cout << "X: " << vec->X << ", Y: " << vec->Y << ", Z: " << vec->Z << endl;
 		//cout << "X: " << (*it)->X << ", Y: " << (*it)->Y << ", Z: " << (*it)->Z << endl;
-	}
+	}*/
+
+
 	/*std::set<Vector3 *> vectorList = Vector3::getVectorList();
 	for(std::set<Vector3 *>::iterator it = vectorList.begin(); it != vectorList.end(); ++it)
 	{
@@ -125,12 +135,13 @@ void updatingThread()
 {
 	while(true)
 	{
-		std::set<Player *> playerList = Player::getPlayerList();
+		//std::set<Player *> playerList = Player::getPlayerList();
 		cout << "Players:" << endl;
 		for(auto player : Player::getPlayerList())
 		{
-			cout << "asd" << endl;
-			//cout << "X: " << vec.X << ", Y: " << vec.Y << ", Z: " << vec.Z << endl;
+			//cout << "asd" << endl;
+			//Vector3 pos(player->getPosition());
+			cout << player->getName() << " asub X: " << player->getPosition().X << ", Y: " << player->getPosition().Y << ", Z: " << player->getPosition().Z << endl;
 		}
 		/*for(std::set<Player *>::iterator player = playerList.begin(); player != playerList.end(); ++player)
 		{

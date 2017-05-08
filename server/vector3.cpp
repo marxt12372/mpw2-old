@@ -7,7 +7,6 @@ Vector3::Vector3(float x, float y, float z)
 	X = x;
 	Y = y;
 	Z = z;
-	//std::cout << "Vector3 Constructor Called" << endl;
 	_vector3List.insert(this);
 }
 

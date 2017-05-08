@@ -85,6 +85,7 @@ public class KeyboardListener
 					MouseListener.Connect_Button_Connect = false;
 					GameLoop.menuLocation = MENU.Connecting;
 					MenuGenerator.generateConnectMenuConnectingText();
+					GameLoop.connectToServer(MenuGenerator.connectip.getTextString(), MenuGenerator.connectname.getTextString());
 				}
 
 				if(!Keyboard.isKeyDown(Keyboard.KEY_RETURN) && _pressedEnter == true)

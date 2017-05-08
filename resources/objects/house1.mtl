@@ -1,0 +1,43 @@
+# Blender MTL File: 'None'
+# Material Count: 4
+
+newmtl atlas
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd /home/mart/Documents/old_house/Map.png
+map_d /home/mart/Documents/old_house/Map.png
+
+newmtl ceiling
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd /home/mart/Documents/old_house/Ceiling.jpg
+
+newmtl wall
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd /home/mart/Documents/old_house/Wall.jpg
+
+newmtl wallP
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd /home/mart/Documents/old_house/WallP.png

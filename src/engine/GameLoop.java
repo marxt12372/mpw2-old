@@ -29,6 +29,8 @@ import textures.ModelTexture;
 
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,8 +41,10 @@ public class GameLoop
 	public static boolean inMultiplayerSession = false;
 	public static int menuLocation = MENU.Startup;
 	public static int textOpen = MENU.None;
-	public static String serverIP = null;
+	public static InetAddress serverIP = null;
 	public static int serverPort = 9667;
+	public static DatagramSocket socket = null;
+	byte[] sendBuf = new byte[256];
 
 	public static FontType font_gentium;
 
@@ -88,7 +92,11 @@ public class GameLoop
 		 */
 
 		MenuGenerator.generateStartupMenuText();
-
+		try {
+			socket = new DatagramSocket();
+		} catch (SocketException e) {
+			e.printStackTrace();
+		}
 
 		/*background = new GuiTexture(loader.loadGuiTexture("background"), new Vector2f(0, 0), new Vector2f(0.5f, 0.5f));
 		guis2.add(background);
@@ -182,5 +190,46 @@ public class GameLoop
 		loader.cleanUp();
 		TextMaster.cleanUp();
 		guiRenderer.cleanUp();
+	}
+
+	public static void connectToServer(String ip, String name)
+	{
+		if(ip.contains(":"))
+		{
+			String[] ips = ip.split(":");
+			try {
+				serverIP = InetAddress.getByName(ips[0]);
+			} catch (UnknownHostException e) {
+				e.printStackTrace();
+			}
+			serverPort = Integer.parseInt(ips[1]);
+		}
+		else
+		{
+			try {
+				serverIP = InetAddress.getByName(ip);
+			} catch (UnknownHostException e) {
+				e.printStackTrace();
+			}
+		}
+		/*String[] ips = ip.split(":");
+		if(ips[1] == "") ips[1] = "9667";*/
+		System.out.println("Connecting to " + serverIP + " at port " + serverPort + " with the name " + name);
+		byte[] buf = new byte[256];
+		buf = ("conn|" + name).getBytes();
+		DatagramPacket packet = new DatagramPacket(buf, buf.length, serverIP, serverPort);
+		try {
+			socket.send(packet);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		buf = ("move " + name + "  to 1.2,1.3,1.4,1.5,1.6,1.7").getBytes();
+		packet = new DatagramPacket(buf, buf.length, serverIP, serverPort);
+		try {
+			socket.send(packet);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

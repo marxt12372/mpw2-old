@@ -57,7 +57,8 @@ public class MainGameLoop
 
         RawModel playerModel = OBJFileLoader.loadModel("playerPed");
 		TexturedModel playerTexture = new TexturedModel(playerModel, new ModelTexture(loader.loadTexture("playerPed")));
-        Player player = new Player(playerTexture, new Vector3f(0, 0, -25), 0, 0, 0, 1);
+        //Player player = new Player(playerTexture, new Vector3f(0, 0, -25), 0, 0, 0, 1);
+		Player player = new Player(playerTexture, new Vector3f(0, 0, 0), 0, 0, 0, 1);
 		Camera camera = new Camera(player);
 
 		List<GuiTexture> guis = new ArrayList<GuiTexture>();

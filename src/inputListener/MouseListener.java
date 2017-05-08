@@ -125,6 +125,7 @@ public class MouseListener
 					Connect_Button_Connect = false;
 					GameLoop.menuLocation = MENU.Connecting;
 					MenuGenerator.generateConnectMenuConnectingText();
+					GameLoop.connectToServer(MenuGenerator.connectip.getTextString(), MenuGenerator.connectname.getTextString());
 				}
 			}
 			else if (mp.getY() >= 0.4486111 && mp.getY() <= 0.4763889) //Name Textfield

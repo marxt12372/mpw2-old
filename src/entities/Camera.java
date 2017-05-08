@@ -11,7 +11,7 @@ import java.awt.*;
 public class Camera
 {
     private Vector3f position = new Vector3f(0, 3.5f, 0);
-    private float distanceFromPlayer = 50;
+    private float distanceFromPlayer = 10;
     private float angleAroundPlayer = 0;
     private float oldangleAroundPlayer = DisplayManager.WIDTH/2;
     private float pitch = 20;
@@ -27,7 +27,7 @@ public class Camera
     }
 
     public void move() {
-		calculateZoom();
+		//calculateZoom();
 		calculateCameraPosition();
 		float horizontalDistance = calculateHorizontalDistance();
 		float verticalDistance = calculateVerticalDistance();
@@ -63,7 +63,7 @@ public class Camera
 		float offsetZ = (float) (horizDistance * Math.cos(Math.toRadians(theta)));
 		position.x = player.getPosition().x - offsetX;
 		position.z = player.getPosition().z - offsetZ;
-		position.y = player.getPosition().y + verticDistance;
+		position.y = player.getPosition().y + verticDistance + 1.75f;
 
 	}
 
